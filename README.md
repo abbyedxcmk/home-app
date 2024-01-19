@@ -1,5 +1,7 @@
-# Home-App
-Home mortgage helper & live news feed
+# Home-App 
+![](./assets/imgs/homeLogo.png)
+<br>
+<br> `Home mortgage helper & live news feed`
 
 ## [Description](#description)
 
