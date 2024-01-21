@@ -274,113 +274,168 @@
           <div class="col-lg-12 p-5 p-lg-0">
             <div class="row d-flex justify-content-lg-center">
               <div class="p-lg-5 col-lg-10">
-                <h2 class="mb-5 fs-3 text-dark text-center">PROPERTY NEWS</h2>
-                <!-- NEWS FORM -->
-                <form id="news-form">
+                <h2 class="mb-5 fs-3 text-dark text-center">FIND YOUR DREAM</h2>
+                <!-- PROPERTY FORM -->
+                <form id="property-form">
                   <!-- FIRST ROW -->
                   <div class="row d-flex justify-content-lg-center">
                     <div class="col-lg-6 mb-3">
-                      <input type="text" class="p-3 form-control" id="search-area" placeholder="SEARCH AREA">
+                      <input type="text" class="p-3 form-control" id="city-name" placeholder="CITY NAME" required>
                     </div>
                     <div class="col-lg-6 mb-3">
+                      <input type="text" class="p-3 form-control" id="country-name" placeholder="COUNTRY" required>
+                    </div>
+                    <div class="col-lg-12 mb-3">
                       <button type="submit" class="p-3 col-12 btn btn-danger">FIND OUT</button>
                     </div>
                   </div>
                   <!-- end of FIRST ROW -->
                 </form>
-                <!-- end of NEWS FORM -->
+                <!-- end of PROPERTY FORM -->
 
-                <!-- NEWS SECTION -->
-                <div id="news-items">
-                  <!-- NEWS-ITEM-0 -->
-                  <div id="news-item-0"
-                    class="col-12 mt-2 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-7">
-                      <p>18-01-2024</p>
-                      <h6>Budget 2024-25: Here is what experts expect for the real estate sector</h6>
-                    </div>
+                <!-- PROPERTY SECTION -->
+                <div id="property-items">
+
+                  <!-- PROPERTY-ITEM-0 -->
+                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
                     <div class="col-4 my-auto">
-                      <div class="bg-transparent w-100 h-75 rounded-3">
-                        <img src="./assets/imgs/th-0.jpg" class="img-fluid rounded-3" alt="">
+                      <div id="property-thumbnail-0" class="bg-transparent w-100 h-100 rounded-3">
+                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
                       </div>
                     </div>
-                  </div>
-                  <!-- end of NEWS-ITEM-0 -->
-
-                  <!-- NEWS-ITEM-1 -->
-                  <div id="news-item-1"
-                    class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-7">
-                      <p>18-01-2024</p>
-                      <h6>Why recessions can be a good time to invest in real estate</h6>
+                    <div id="property-item-0" class="col-7">
+                      <p id="property-type-0"></p>
+                      <h2 id="property-price-0"></h2>
+                      <p id="property-address-0"></p>
+                      <ul class="list-unstyled d-flex my-auto">
+                        <li id="bedroom-img-li-0">
+                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bedroom-0" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="bathroom-img-li-0">
+                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bathroom-0" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="reception-img-li-0">
+                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-reception-0" class="ms-2 fs-5"></p>
+                        </li>
+                      </ul>
                     </div>
+                  </div>
+                  <!-- end of PROPERTY-ITEM-0 -->
+
+                  <!-- PROPERTY-ITEM-1 -->
+                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
                     <div class="col-4 my-auto">
-                      <div class="bg-transparent w-100 h-75 rounded-3">
-                        <img src="./assets/imgs/th-1.jpg" class="img-fluid rounded-3" alt="">
+                      <div id="property-thumbnail-1" class="bg-transparent w-100 h-100 rounded-3">
+                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
                       </div>
                     </div>
-                  </div>
-                  <!-- end of NEWS-ITEM-1 -->
-
-                  <!-- NEWS-ITEM-2 -->
-                  <div id="news-item-2"
-                    class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-7">
-                      <p>18-01-2024</p>
-                      <h6>Commercial real estate implosion: Blackstone is desperately trying to shift</h6>
+                    <div id="property-item-1" class="col-7">
+                      <p id="property-type-1"></p>
+                      <h2 id="property-price-1"></h2>
+                      <p id="property-address-1"></p>
+                      <ul class="list-unstyled d-flex my-auto">
+                        <li id="bedroom-img-li-1">
+                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bedroom-1" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="bathroom-img-li-1">
+                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bathroom-1" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="reception-img-li-1">
+                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-reception-1" class="ms-2 fs-5"></p>
+                        </li>
+                      </ul>
                     </div>
+                  </div>
+                  <!-- end of PROPERTY-ITEM-1 -->
+
+                  <!-- PROPERTY-ITEM-2 -->
+                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
                     <div class="col-4 my-auto">
-                      <div class="bg-transparent w-100 h-75 rounded-3">
-                        <img src="./assets/imgs/th-2.jpg" class="img-fluid rounded-3" alt="">
+                      <div id="property-thumbnail-2" class="bg-transparent w-100 h-100 rounded-3">
+                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
                       </div>
                     </div>
-                  </div>
-                  <!-- end of NEWS-ITEM-2 -->
-
-                  <!-- NEWS-ITEM-3 -->
-                  <div id="news-item-3"
-                    class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-7">
-                      <p>18-01-2024</p>
-                      <h6>When the broker is a chatbot: How AI will shake up commercial real estate</h6>
+                    <div id="property-item-2" class="col-7">
+                      <p id="property-type-2"></p>
+                      <h2 id="property-price-2"></h2>
+                      <p id="property-address-2"></p>
+                      <ul class="list-unstyled d-flex my-auto">
+                        <li id="bedroom-img-li-2">
+                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bedroom-2" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="bathroom-img-li-2">
+                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bathroom-2" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="reception-img-li-2">
+                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-reception-2" class="ms-2 fs-5"></p>
+                        </li>
+                      </ul>
                     </div>
+                  </div>
+                  <!-- end of PROPERTY-ITEM-2 -->
+
+                  <!-- PROPERTY-ITEM-3 -->
+                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
                     <div class="col-4 my-auto">
-                      <div class="bg-transparent w-100 h-75 rounded-3">
-                        <img src="./assets/imgs/th-3.jpg" class="img-fluid rounded-3" alt="">
+                      <div id="property-thumbnail-3" class="bg-transparent w-100 h-100 rounded-3">
+                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
                       </div>
                     </div>
+                    <div id="property-item-3" class="col-7">
+                      <p id="property-type-3"></p>
+                      <h2 id="property-price-3"></h2>
+                      <p id="property-address-3"></p>
+                      <ul class="list-unstyled d-flex my-auto">
+                        <li id="bedroom-img-li-3">
+                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bedroom-3" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="bathroom-img-li-3">
+                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-bathroom-3" class="ms-2 fs-5"></p>
+                        </li>
+                        <li id="reception-img-li-3">
+                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
+                        </li>
+                        <li>
+                          <p id="property-reception-3" class="ms-2 fs-5"></p>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <!-- end of NEWS-ITEM-3 -->
+                  <!-- end of PROPERTY-ITEM-3 -->
 
-                  <!-- NEWS-ITEM-4 -->
-                  <div id="news-item-4"
-                    class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-7">
-                      <p>18-01-2024</p>
-                      <h6>The bill is coming due on a record amount of commercial real estate debt</h6>
-                    </div>
-                    <div class="col-4 my-auto">
-                      <div class="bg-transparent w-100 h-75 rounded-3">
-                        <img src="./assets/imgs/th-4.jpg" class="img-fluid rounded-3" alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of NEWS-ITEM-4 -->
-
-                  <!-- NEWS-ITEM-5 -->
-                  <div id="news-item-5"
-                    class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-7">
-                      <p>18-01-2024</p>
-                      <h6>Egypt Sherrod and Mike Jackson's Marriage: All about the "Married to Real Estate"</h6>
-                    </div>
-                    <div class="col-4 my-auto">
-                      <div class="bg-transparent w-100 h-75 rounded-3">
-                        <img src="./assets/imgs/th-5.jpg" class="img-fluid rounded-3" alt="">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of NEWS-ITEM-5 -->
                 </div>
                 <!-- end of NEWS SECTION -->
               </div>
