@@ -55,7 +55,44 @@ $(document).ready(function() {
       // Log the error to the console for debugging
       console.error('Error:', error);
     };
-  };  
+  };
+
+  // Function to display mortgage data on the page
+  function displayMortgageData(data) {
+    // Log the raw data to the console for debugging purposes
+    console.log(data);
+    // This line extracts the monthly mortgage payment from the data object (data)
+    const monthlyPayment = data.monthly_payment.mortgage;
+    // This line extracts the annual mortgage payment from the data object (data)
+    const annualPayment = data.annual_payment.mortgage;
+    // This extracts the total interest paid from the data object
+    const interestPaid = data.total_interest_paid;
+    // This calculates the total number of months based on the globalDurationYears
+    const months = globalDurationYears * 12;
+    // Formats the value of monthlyPayment as a currency amount in British Pounds
+    const monthlyPaymentGBP = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(monthlyPayment);
+    // Formats the value of annualPaymentGBP as a currency amount in British Pounds
+    const annualPaymentGBP = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(annualPayment);
+    // Formats the value of interestPaidGBP as a currency amount in British Pounds
+    const interestPaidGBP = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(interestPaid);
+    // Update the text content of the element with ID "monthly-payment"
+    $('#monthly-payment').text(monthlyPaymentGBP);
+    // Update the text content of the element with ID "annual-payment"
+    $('#annual-payment').text(annualPaymentGBP);
+    // Update the text content of the element with ID "total-interest-paid"
+    $('#total-interest-paid').text(interestPaidGBP);
+    // Update the text content of the element with ID "#months"
+    $('#months').text(months);
+  };
 
 });
 
