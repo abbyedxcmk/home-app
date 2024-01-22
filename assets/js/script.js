@@ -149,5 +149,59 @@ $(document).ready(function() {
     };
   };
 
+  // Function to display property data on the page
+  function displayPropertyData(data) {
+    // Select the element with the ID property-items and applies the show() method
+    $('#property-items').show();
+    // Log the raw data to the console for debugging purposes
+    console.log(data);
+    
+    for (i=0;i<5;i++){
+      // Assigns a random integer between 0 and 39
+      const i = Math.floor(Math.random() * 40);
+      // Retrieves the image URL for the property at the random index i from the data.listing array
+      var thumbnail = data.listing[i].image_url;
+      // Retrieves the property type for the property at the random index i from the data.listing
+      var propertyType = data.listing[i].property_type;
+      // Retrieves the property price for the property at the random index i from the data.listing
+      var propertyPrice = data.listing[i].price;
+      // Retrieves the displayable address for the property at the random index i from the data.listing
+      var propertyAddress = data.listing[i].displayable_address;
+      // Retrieves the number of bedrooms for the property at the random index i from the data.listing
+      var propertyBedroom = data.listing[i].num_bedrooms;
+      // Retrieves the number of bathrooms for the property at the random index i from the data.listing
+      var propertyBathroom = data.listing[i].num_bathrooms;
+      // Retrieves the number of reception rooms for the property at the random index i from the data.listing
+      var propertyReception = data.listing[i].num_recepts;
+      
+      // Creating the main property container
+      var propertyItemDiv = $('<div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg"></div>');
+
+      // Adding the image thumbnail
+      var propertyThumbnailDiv = $('<div class="col-4 my-auto"></div>').appendTo(propertyItemDiv);
+      $('<div id="property-thumbnail-' + i + '" class="bg-transparent w-100 h-100 rounded-3"></div>').html('<img src="' + thumbnail + '" class="img-fluid rounded-3" />').appendTo(propertyThumbnailDiv);
+
+      // Adding the property information
+      var propertyInfo = $('<div id="property-item-' + i + '" class="col-7"></div>').appendTo(propertyItemDiv);
+      $('<p id="property-type-' + i + '"></p>').text(propertyType).appendTo(propertyInfo);
+      $('<h2 id="property-price-' + i + '"></h2>').text(propertyPrice).appendTo(propertyInfo);
+      $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(propertyInfo);
+
+      // Adding property features
+      var propertyFeatures = $('<ul class="list-unstyled d-flex my-auto"></ul>').appendTo(propertyInfo);
+      $('<li><img src="./assets/imgs/bedroom.png" height="24px" alt=""></li>').appendTo(propertyFeatures);
+      $('<li class="ms-2"><p id="property-bedroom-' + i + '" class="fs-5"></p></li>').text(propertyBedroom).appendTo(propertyFeatures);
+      $('<li><img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt=""></li>').appendTo(propertyFeatures);
+      $('<li class="ms-2"><p id="property-bathroom-' + i + '" class="fs-5"></p></li>').text(propertyBathroom).appendTo(propertyFeatures);
+      if (propertyReception > 0) {
+        $('<li id="reception-img-li-' + i + '"><img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt=""></li>').appendTo(propertyFeatures);
+        $('<li class="ms-2"><p id="property-reception-' + i + '" class="fs-5"></p></li>').text(propertyReception).appendTo(propertyFeatures);
+      }
+
+      // 
+      $('#property-items').append(propertyItemDiv);
+    };
+  };
+
 });
 
