@@ -69,6 +69,8 @@ $(document).ready(function() {
     const interestPaid = data.total_interest_paid;
     // This calculates the total number of months based on the globalDurationYears
     const months = globalDurationYears * 12;
+    // Removes the `opacity-25` class and adds the `opacity-100` class
+    $('.opacity-25').removeClass('opacity-25').addClass('opacity-100');
     // Formats the value of monthlyPayment as a currency amount in British Pounds
     const monthlyPaymentGBP = new Intl.NumberFormat("en-GB", {
       style: "currency",
@@ -173,18 +175,23 @@ $(document).ready(function() {
       var propertyBathroom = data.listing[i].num_bathrooms;
       // Retrieves the number of reception rooms for the property at the random index i from the data.listing
       var propertyReception = data.listing[i].num_recepts;
+      // Formats the value of propertyPrice as a currency amount in British Pounds
+      const propertyPriceGBP = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP",
+      }).format(propertyPrice);
       
       // Creating the main property container
-      var propertyItemDiv = $('<div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg"></div>');
+      var propertyItemDiv = $('<div class="col-12 col-md-10 mx-md-auto mt-3 p-3 d-flex flex-lg-column justify-content-between rounded-3 bg-white shadow-lg"></div>');
 
       // Adding the image thumbnail
-      var propertyThumbnailDiv = $('<div class="col-4 my-auto"></div>').appendTo(propertyItemDiv);
+      var propertyThumbnailDiv = $('<div class="col-4 col-lg-12 my-auto"></div>').appendTo(propertyItemDiv);
       $('<div id="property-thumbnail-' + i + '" class="bg-transparent w-100 h-100 rounded-3"></div>').html('<img src="' + thumbnail + '" class="img-fluid rounded-3" />').appendTo(propertyThumbnailDiv);
 
       // Adding the property information
-      var propertyInfo = $('<div id="property-item-' + i + '" class="col-7"></div>').appendTo(propertyItemDiv);
+      var propertyInfo = $('<div id="property-item-' + i + '" class="col-7 col-lg-12 mt-lg-2"></div>').appendTo(propertyItemDiv);
       $('<p id="property-type-' + i + '"></p>').text(propertyType).appendTo(propertyInfo);
-      $('<h2 id="property-price-' + i + '"></h2>').text(propertyPrice).appendTo(propertyInfo);
+      $('<h2 id="property-price-' + i + '"></h2>').text(propertyPriceGBP).appendTo(propertyInfo);
       $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(propertyInfo);
 
       // Adding property features
