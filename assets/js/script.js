@@ -115,5 +115,39 @@ $(document).ready(function() {
     fetchPropertyData(queryURL);
   });
 
+  // Declare an asynchronous function named fetchMortgageData that takes a queryURL as input
+  async function fetchPropertyData(queryURL) {
+    try {
+      // Attempt to make an HTTP GET request to the specified queryURL
+      const response = await fetch(queryURL, {
+        async: true,
+        crossDomain: true,
+        // Specify the HTTP method as GET
+        method: 'GET',
+        // Set the 'X-Api-Key' header for authentication
+        headers: {
+          'X-RapidAPI-Key': 'b55274dc38msh79e9da6e2ff0c24p135b5cjsncb8fdf5de282',
+          'X-RapidAPI-Host': 'zoopla.p.rapidapi.com'
+        }
+      });
+      
+      // Check if the HTTP response was successful
+      if (!response.ok) {
+        // If not successful, throw an error with the HTTP status code
+        throw new Error(`HTTP error! status: ${response.status}`);
+      };
+      
+      // Parse the JSON response from the API
+      const result = await response.json();
+
+      // Call a function to display the mortgage data
+      displayPropertyData(result);
+    // Catch any errors that occur during the request or parsing process
+    } catch (error) {
+      // Log the error to the console for debugging
+      console.error('Error:', error);
+    };
+  };
+
 });
 
