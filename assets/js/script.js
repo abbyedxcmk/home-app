@@ -203,5 +203,27 @@ $(document).ready(function() {
     };
   };
 
+  // async function fetchGuardianData() {
+  //   try {
+  //     const response = await fetch('https://content.guardianapis.com/search?order-by=relevance&show-elements=image&q=mortgage&api-key=08d6818f-52da-42a3-b45d-a088003bde02');
+
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+
+  //     const result = await response.json();
+
+  //     console.log(result);
+  //     // $('#monthly-payment').text(`Monthly: ${result.monthly_payment.mortgage}`);
+  //     // $('#annual-payment').text(`Annual: ${result.annual_payment.mortgage}`);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   };
+  // };
+
+  // //
+
+  // fetchGuardianData();   
+
 });
 
