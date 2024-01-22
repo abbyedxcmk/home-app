@@ -94,5 +94,26 @@ $(document).ready(function() {
     $('#months').text(months);
   };
 
+  // Select the form with the ID "property-form" and attach a submit event listener to it
+  $('#property-form').submit(function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    // This leaves the `property-items` element itself intact but completely empty
+    $('#property-items').empty();
+    // This select the element with the ID `property-items` and hides it from the user
+    $('#property-items').hide();
+
+    // Extract the city name value from the field with ID "city-name"
+    const cityName = $('#city-name').val();
+    // Extract the country name value from the field with ID "country-name"
+    const countryName = $('#country-name').val();
+  
+    // Construct the query URL for the API call, incorporating the form data
+    const queryURL = `https://zoopla.p.rapidapi.com/properties/list?area=${cityName}%2C%20${countryName}&category=residential&include_retirement_homes=no&include_shared_accommodation=no&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=40`
+  
+    // Call the function to fetch mortgage data from the API using the constructed URL
+    fetchPropertyData(queryURL);
+  });
+
 });
 
