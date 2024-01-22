@@ -28,5 +28,34 @@ $(document).ready(function() {
     //
   });
 
+  // Declare an asynchronous function named fetchMortgageData that takes a queryURL as input
+  async function fetchMortgageData(queryURL) {
+    try {
+      // Attempt to make an HTTP GET request to the specified queryURL
+      const response = await fetch(queryURL, {
+        // Set the 'X-Api-Key' header for authentication
+        headers: { 'X-Api-Key': 'gximlgkfMZ/lC3Z0vfC7RQ==fVXya3H44BEju3ua' },
+        // Specify the HTTP method as GET
+        method: 'GET'
+      });
+      
+      // Check if the HTTP response was successful
+      if (!response.ok) {
+        // If not successful, throw an error with the HTTP status code
+        throw new Error(`HTTP error! status: ${response.status}`);
+      };
+      
+      // Parse the JSON response from the API
+      const result = await response.json();
+
+      // Call a function to display the mortgage data
+      displayMortgageData(result);
+    // Catch any errors that occur during the request or parsing process
+    } catch (error) {
+      // Log the error to the console for debugging
+      console.error('Error:', error);
+    };
+  };  
+
 });
 
