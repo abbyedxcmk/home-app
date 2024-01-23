@@ -245,27 +245,102 @@ $(document).ready(function() {
     };
   };
 
-  // async function fetchGuardianData() {
-  //   try {
-  //     const response = await fetch('https://content.guardianapis.com/search?order-by=relevance&show-elements=image&q=mortgage&api-key=08d6818f-52da-42a3-b45d-a088003bde02');
+  //
+  async function fetchRealTimeNewsData() {
+    const settings = {
+      async: true,
+      crossDomain: true,
+      url: 'https://real-time-news-data.p.rapidapi.com/search?query=MORTGAGE&country=GB&lang=en&time_published=7d',
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '08fbea1f54mshb80b282ded04b7bp1184d7jsnd63fe4ea2222',
+        'X-RapidAPI-Host': 'real-time-news-data.p.rapidapi.com'
+      }
+    };
+    
+    $.ajax(settings).done(function (response) {
+      // Call a function to display the mortgage data
+      displayRealTimeNewsData(response);
+    });
+  };
 
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
+  //
+  fetchRealTimeNewsData();
 
-  //     const result = await response.json();
+  // Function to display property data on the page
+  function displayRealTimeNewsData(response) {
 
-  //     console.log(result);
-  //     // $('#monthly-payment').text(`Monthly: ${result.monthly_payment.mortgage}`);
-  //     // $('#annual-payment').text(`Annual: ${result.annual_payment.mortgage}`);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   };
-  // };
+    // Log the raw data to the console for debugging purposes
+    console.log(response);
 
-  // //
+    const array = response.data;
 
-  // fetchGuardianData();   
+    const firstSet = [];
+    const secondSet = [];
 
+    for (let i = 0; i < 4; i++) {
+      const index = Math.floor(Math.random() * array.length);
+      firstSet.push(array[index]);
+      array.splice(index, 1);
+
+      // Retrieves the displayable address for the property at the random index i from the data.listing
+      var newsItems0Date = firstSet[i].published_datetime_utc;
+
+      // Retrieves the property type for the property at the random index i from the data.listing
+      var newsItems0Title = firstSet[i].title;
+
+      // Retrieves the property price for the property at the random index i from the data.listing
+      var newsItems0Link = firstSet[i].link;
+
+      const date = newsItems0Date;
+      const formattedDate = moment(date).format("DD-MM-YYYY HH:mm");
+      
+      // Creating the main property container
+      var newsItemDiv = $('<div class="col-12 p-3 mb-3 rounded-3 bg-white shadow-lg"></div>');
+
+      // var newsItemDiv = $('<div class="col-12 col-md-6 p-3 rounded-3 bg-white shadow-lg"></div>');
+
+      // Adding the property information
+      var newsItemInfo = $('<div id="news-item-' + i + '" class="col-12"></div>').appendTo(newsItemDiv);
+      $('<p id="news-published-date-' + i + '"></p>').text(formattedDate).appendTo(newsItemInfo);
+      $('<h4 id="news-title-' + i + '"></h4>').text(newsItems0Title).appendTo(newsItemInfo);
+      // $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(newsItemInfo);
+
+      // Append property info to property items element
+      $('#news-items-0').append(newsItemDiv);
+    };
+
+    for (let i = 0; i < 4; i++) {
+      const index = Math.floor(Math.random() * array.length);
+      secondSet.push(array[index]);
+      array.splice(index, 1);
+
+      // Retrieves the displayable address for the property at the random index i from the data.listing
+      var newsItems0Date = secondSet[i].published_datetime_utc;
+
+      // Retrieves the property type for the property at the random index i from the data.listing
+      var newsItems0Title = secondSet[i].title;
+
+      // Retrieves the property price for the property at the random index i from the data.listing
+      var newsItems0Link = secondSet[i].link;
+
+      const date = newsItems0Date;
+      const formattedDate = moment(date).format("DD-MM-YYYY HH:mm");
+      
+      // Creating the main property container
+      var newsItemDiv = $('<div class="col-12 p-3 mb-3 rounded-3 bg-white shadow-lg"></div>');
+
+      // var newsItemDiv = $('<div class="col-12 col-md-6 p-3 rounded-3 bg-white shadow-lg"></div>');
+
+      // Adding the property information
+      var newsItemInfo = $('<div id="news-item-' + i + '" class="col-12"></div>').appendTo(newsItemDiv);
+      $('<p id="news-published-date-' + i + '"></p>').text(formattedDate).appendTo(newsItemInfo);
+      $('<h4 id="news-title-' + i + '"></h4>').text(newsItems0Title).appendTo(newsItemInfo);
+      // $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(newsItemInfo);
+
+      // Append property info to property items element
+      $('#news-items-1').append(newsItemDiv);
+    };
+  };
 });
 
