@@ -22,7 +22,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand fs-1" href="#">h<span class="text-danger">ô</span>me</a>
+          <a class="navbar-brand fs-1 fw-bold" href="#">h<span class="text-danger">ô</span>me</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
 <!-- //where is you. -->
   <!-- HERO -->
   <section id="hero">
-    <div class="container my-5">
+    <div class="container my-1"> <!--ADD MY-1 -->
       <div class="row p-3 align-items-center justify-content-center rounded-3 border shadow-lg">
         <div class="col-lg-7 p-3 ps-lg-0 pe-lg-5">
           <h1 class="display-1 fw-bold lh-1">Uncomplicated and <span class="text-danger">simplified</span></h1>
@@ -60,417 +60,143 @@
             estate market, or to find the home of your dreams.</p>
         </div>
         <div class="col-lg-4 offset-lg- p-0 overflow-hidden shadow-lg">
-          <img src="./assets/imgs/london-houses.jpg" alt="" width="480">
+          <img src="./assets/imgs/london-houses.jpg" class="img-fluid" width="920" height="460" alt=""> 
         </div>
       </div>
     </div>
   </section>
   <!-- end of HERO -->
 
-  <!-- MAIN -->
-  <main>
-    <div class="container my-5">
-      <div class="row">
-        <!-- LEFT CONTENT --> 
-      
-        <div class="col-lg-6 ps-lg-0">
-          <div class="col-lg-12 p-5 p-lg-0 rounded-3 bg-dark">
-            <div class="row d-flex justify-content-lg-center">
-              <div class="p-lg-5 col-lg-10">
-                <h2 class="mb-5 fs-3 text-light text-center">MORTGAGE CALCULATOR</h2>
+    <!-- MAIN -->
+    <main>
+      <!-- CONTAINER -->
+      <div class="container my-5">
+        <!-- ROW -->
+        <div class="row">
+          <!-- LEFT CONTENTS -->
+          <div class="col-lg-8">
+            <div class="row col-lg-12 p-3 rounded-3 bg-dark">
+              <!-- MORTGAGE CALCULATOR -->
+              <div class="col-lg-6 d-flex flex-column justify-content-end">
+                <!-- MORTGAGE TITLE -->
+                <div class="col-12">
+                  <h2 class="fs-1 text-light text-center">MORTGAGE</h2>
+                  <h2 class="mb-4 fs-6 text-light text-center">CALCULATOR</h2>
+                </div>
+                <!-- end of MORTGAGE TITLE -->
+            
                 <!-- MORTGAGE FORM -->
                 <form id="mortgage-form">
-                  <!-- FIRST ROW -->
-                  <div class="row d-flex justify-content-lg-center">
-                    <div class="col-lg-6 mb-3">
-                      <input type="text" class="p-3 form-control" id="loan-amount" placeholder="LOAN AMOUNT">
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                      <input type="text" class="p-3 form-control" id="interest-rate" placeholder="INTEREST RATE">
-                    </div>
+                  <div class="col-lg-12 my-3">
+                    <input type="text" class="p-3 form-control" id="loan-amount" placeholder="LOAN AMOUNT">
                   </div>
-                  <!-- end of FIRST ROW -->
-
-                  <!-- SECOND ROW -->
-                  <div class="row d-flex justify-content-lg-center">
-                    <div class="col-lg-6 mb-3">
-                      <input type="text" class="p-3 form-control" id="duration-years" placeholder="DURATION YEARS">
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                      <button type="submit" class="p-3 col-12 btn btn-danger">SHOW ME</button>
-                    </div>
+                  <div class="col-lg-12 my-3">
+                    <input type="text" class="p-3 form-control" id="interest-rate" placeholder="INTEREST RATE">
                   </div>
-                  <!-- end of SECOND ROW -->
+                  <div class="col-lg-12 my-3">
+                    <input type="text" class="p-3 form-control" id="duration-years" placeholder="DURATION YEARS">
+                  </div>
+                  <div class="col-lg-12 my-3">
+                    <button type="submit" class="p-3 col-12 btn btn-danger">SHOW ME</button>
+                  </div>
                 </form>
                 <!-- end of MORTGAGE FORM -->
-
               </div>
+              <!-- end of MORTGAGE CALCULATOR -->
+            
+              <!-- MORTGAGE RESULTS -->
+              <div class="col-lg-6">
+                <!-- RESULT ITEMS -->
+                <div class="col-12 p-1 my-3 rounded-3 bg-danger opacity-25">
+                  <h6 class="ps-2 text-white">Monthly Payment</h6>
+                  <p id="monthly-payment" class="mx-2 ps-2 fs-4 rounded-1 bg-light">£</p>
+                </div>
+                <div class="col-12 p-1 my-3 rounded-3 bg-danger opacity-25">
+                  <h6 class="ps-2 text-white">Annual Payment</h6>
+                  <p id="annual-payment" class="mx-2 ps-2 fs-4 rounded-1 bg-light">£</p>
+                </div>
+                <div class="col-12 p-1 my-3 rounded-3 bg-danger opacity-25">
+                  <h6 class="ps-2 text-white">Total Interest Paid</h6>
+                  <p id="total-interest-paid" class="mx-2 ps-2 fs-4 rounded-1 bg-light">£</p>
+                </div>
+                <div class="col-12 p-1 my-3 rounded-3 bg-danger opacity-25">
+                  <h6 class="ps-2 text-white">Months</h6>
+                  <p id="months" class="mx-2 ps-2 fs-4 rounded-1 bg-light">0</p>
+                </div>
+                <!-- end of RESULT ITEMS -->
+              </div>
+              <!-- end of MORTGAGE RESULTS -->
             </div>
+            <!-- end of LEFT CONTENTS -->
           </div>
-          <!--Display the mortage output values-->
-          <div class="col-lg-12 p-5 p-lg-0 rounded-3 bg-dark">
-            <div class="row d-flex justify-content-lg-center">
-              <div class="col-lg-6 mb-3">
-                <!--Display the output result for monthly payment-->
-                 <div class="mb-3 btn btn-danger">
-                     <h5 class="form-label">Monthly Payment</h5>
-                     <p id="monthly-payment" class="form-control">£</p>
-                  </div>
+          <!-- end of LEFT CONTENTS -->
   
-                <!--Display the output result for annual payment-->
-                  <div class="mb-3 btn btn-danger">
-                    <h5 class="form-label">Annual Payment</h5>
-                    <p id="annual-payment" class="form-control">£</p>
+          <!-- RIGHT CONTENTS -->
+          <div class="col-lg-4 p-4 my-5 my-lg-0 rounded-3 bg-light shadow-lg">
+            <!-- FIND YOUR DREAM -->
+            <div class="col-lg-12 my-2 rounded-3 bg-light shadow-lg">
+                <div class="row d-flex justify-content-lg-center">
+                  <div class="py-5 px-lg-3 col-lg-10">
+                    <h2 class="mb-5 fs-3 text-dark text-center">FIND YOUR DREAM</h2>
+                    <!-- PROPERTY FORM -->
+                    <form id="property-form">
+                      <!-- FIRST ROW -->
+                      <div class="row d-flex justify-content-center">
+                        <div class="col-10 col-md-5 col-lg-10 mb-3">
+                          <input type="text" class="p-3 form-control" id="city-name" placeholder="CITY NAME" required>
+                        </div>
+                        <div class="col-10 col-md-5 col-lg-10 mb-3">
+                          <input type="text" class="p-3 form-control" id="country-name" placeholder="COUNTRY" required>
+                        </div>
+                        <div class="col-10 mb-3">
+                          <button type="submit" class="p-3 col-12 btn btn-danger">FIND OUT</button>
+                        </div>
+                      </div>
+                      <!-- end of FIRST ROW -->
+                    </form>
+                    <!-- end of PROPERTY FORM -->
+
+                    <!-- PROPERTY SECTION -->
+                    <div id="property-items">
+
+                    </div>
+                    <!-- end of NEWS SECTION -->
                   </div>
-                 
-                 <!--Display the output result for Total Interest Paid payment-->
-                 <div class="mb-3 btn btn-danger">
-                  <h5 class="form-label">Total Interest Paid</h5>
-                  <p id="total-interest-paid" class="form-control">£</p>
-                 </div>
-              
-                 
-                <!-- <div id="monthly-payment" class="col-6 text-warning">
-
                 </div>
-
-                <div id="annual-payment" class="col-6 text-danger "></div>
-
-                <div id="total-interest-paid" class="col-6 text-info"></div> -->
-              </div>
             </div>
+            <!-- end of FIND YOUR DREAM -->
           </div>
-          <!--out end -->
-
-          <!-- PROPERTY SECTION -->
-          <div id="property-items">
-            <!-- PROPERTY-ITEM-0 -->
-            <div id="property-item-0"
-              class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-              <div class="col-4 my-auto">
-                <div class="bg-transparent w-100 h-100 rounded-3">
-                  <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt="">
-                </div>
-              </div>
-              <div class="col-7">
-                <p>Flat</p>
-                <h2>£285,200</h2>
-                <p>Lowry Way, Swindon SN3</p>
-                <ul class="list-unstyled d-flex my-auto">
-                  <li>
-                    <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                  </li>
-                  <li id="bedroom-0">
-                    <p class="ms-2 fs-5">1</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="bathroom-0" class="ms-2 fs-5">1</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="reception-0" class="ms-2 fs-5">0</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- end of PROPERTY-ITEM-0 -->
-
-            <!-- PROPERTY-ITEM-1 -->
-            <div id="property-item-1"
-              class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-              <div class="col-4 my-auto">
-                <div class="bg-transparent w-100 h-100 rounded-3">
-                  <img src="./assets/imgs/property-1.webp" class="img-fluid rounded-3" alt="">
-                </div>
-              </div>
-              <div class="col-7">
-                <p>Semi-detached</p>
-                <h2>£409,995</h2>
-                <p>Mill Lane, Swindon SN1</p>
-                <ul class="list-unstyled d-flex my-auto">
-                  <li>
-                    <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                  </li>
-                  <li id="bedroom-1">
-                    <p class="ms-2 fs-5">4</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="bathroom-1" class="ms-2 fs-5">2</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="reception-1" class="ms-2 fs-5">2</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- end of PROPERTY-ITEM-1 -->
-
-            <!-- PROPERTY-ITEM-2 -->
-            <div id="property-item-2"
-              class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-              <div class="col-4 my-auto">
-                <div class="bg-transparent w-100 h-100 rounded-3">
-                  <img src="./assets/imgs/property-2.webp" class="img-fluid rounded-3" alt="">
-                </div>
-              </div>
-              <div class="col-7">
-                <p>Flat</p>
-                <h2>£2,900,000</h2>
-                <p>Duchess Walk, London SE1</p>
-                <ul class="list-unstyled d-flex my-auto">
-                  <li>
-                    <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                  </li>
-                  <li id="bedroom-2">
-                    <p class="ms-2 fs-5">3</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="bathroom-2" class="ms-2 fs-5">3</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="reception-2" class="ms-2 fs-5">1</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- end of PROPERTY-ITEM-2 -->
-
-            <!-- PROPERTY-ITEM-3 -->
-            <div id="property-item-3"
-              class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-              <div class="col-4 my-auto">
-                <div class="bg-transparent w-100 h-100 rounded-3">
-                  <img src="./assets/imgs/property-3.webp" class="img-fluid rounded-3" alt="">
-                </div>
-              </div>
-              <div class="col-7">
-                <p>Flat</p>
-                <h2>£1,410,000</h2>
-                <p>Wood Lane, London W12</p>
-                <ul class="list-unstyled d-flex my-auto">
-                  <li>
-                    <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                  </li>
-                  <li id="bedroom-3">
-                    <p class="ms-2 fs-5">2</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="bathroom-3" class="ms-2 fs-5">2</p>
-                  </li>
-                  <li>
-                    <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                  </li>
-                  <li>
-                    <p id="reception-3" class="ms-2 fs-5">1</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- end of PROPERTY-ITEM-3 -->
-          </div>
-          <!-- end of PROPERTY SECTION -->
+          <!-- end of RIGHT CONTENTS -->
         </div>
-        <!-- end of LEFT CONTENT -->
-
-        <!-- RIGHT CONTENT -->
-        <div class="col-lg-6 pe-lg-0 my-5 my-lg-0 rounded-3 bg-light shadow-lg">
-          <div class="col-lg-12 p-5 p-lg-0">
-            <div class="row d-flex justify-content-lg-center">
-              <div class="p-lg-5 col-lg-10">
-                <h2 class="mb-5 fs-3 text-dark text-center">FIND YOUR DREAM</h2>
-                <!-- PROPERTY FORM -->
-                <form id="property-form">
-                  <!-- FIRST ROW -->
-                  <div class="row d-flex justify-content-lg-center">
-                    <div class="col-lg-6 mb-3">
-                      <input type="text" class="p-3 form-control" id="city-name" placeholder="CITY NAME" required>
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                      <input type="text" class="p-3 form-control" id="country-name" placeholder="COUNTRY" required>
-                    </div>
-                    <div class="col-lg-12 mb-3">
-                      <button type="submit" class="p-3 col-12 btn btn-danger">FIND OUT</button>
-                    </div>
-                  </div>
-                  <!-- end of FIRST ROW -->
-                </form>
-                <!-- end of PROPERTY FORM -->
-
-                <!-- PROPERTY SECTION -->
-                <div id="property-items">
-
-                  <!-- PROPERTY-ITEM-0 -->
-                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-4 my-auto">
-                      <div id="property-thumbnail-0" class="bg-transparent w-100 h-100 rounded-3">
-                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
-                      </div>
-                    </div>
-                    <div id="property-item-0" class="col-7">
-                      <p id="property-type-0"></p>
-                      <h2 id="property-price-0"></h2>
-                      <p id="property-address-0"></p>
-                      <ul class="list-unstyled d-flex my-auto">
-                        <li id="bedroom-img-li-0">
-                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bedroom-0" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="bathroom-img-li-0">
-                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bathroom-0" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="reception-img-li-0">
-                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-reception-0" class="ms-2 fs-5"></p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- end of PROPERTY-ITEM-0 -->
-
-                  <!-- PROPERTY-ITEM-1 -->
-                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-4 my-auto">
-                      <div id="property-thumbnail-1" class="bg-transparent w-100 h-100 rounded-3">
-                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
-                      </div>
-                    </div>
-                    <div id="property-item-1" class="col-7">
-                      <p id="property-type-1"></p>
-                      <h2 id="property-price-1"></h2>
-                      <p id="property-address-1"></p>
-                      <ul class="list-unstyled d-flex my-auto">
-                        <li id="bedroom-img-li-1">
-                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bedroom-1" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="bathroom-img-li-1">
-                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bathroom-1" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="reception-img-li-1">
-                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-reception-1" class="ms-2 fs-5"></p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- end of PROPERTY-ITEM-1 -->
-
-                  <!-- PROPERTY-ITEM-2 -->
-                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-4 my-auto">
-                      <div id="property-thumbnail-2" class="bg-transparent w-100 h-100 rounded-3">
-                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
-                      </div>
-                    </div>
-                    <div id="property-item-2" class="col-7">
-                      <p id="property-type-2"></p>
-                      <h2 id="property-price-2"></h2>
-                      <p id="property-address-2"></p>
-                      <ul class="list-unstyled d-flex my-auto">
-                        <li id="bedroom-img-li-2">
-                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bedroom-2" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="bathroom-img-li-2">
-                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bathroom-2" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="reception-img-li-2">
-                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-reception-2" class="ms-2 fs-5"></p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- end of PROPERTY-ITEM-2 -->
-
-                  <!-- PROPERTY-ITEM-3 -->
-                  <div class="col-12 mt-3 p-3 d-flex justify-content-between rounded-3 bg-white shadow-lg">
-                    <div class="col-4 my-auto">
-                      <div id="property-thumbnail-3" class="bg-transparent w-100 h-100 rounded-3">
-                        <!-- <img src="./assets/imgs/property-0.webp" class="img-fluid rounded-3" alt=""> -->
-                      </div>
-                    </div>
-                    <div id="property-item-3" class="col-7">
-                      <p id="property-type-3"></p>
-                      <h2 id="property-price-3"></h2>
-                      <p id="property-address-3"></p>
-                      <ul class="list-unstyled d-flex my-auto">
-                        <li id="bedroom-img-li-3">
-                          <img src="./assets/imgs/bedroom.png" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bedroom-3" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="bathroom-img-li-3">
-                          <img src="./assets/imgs/bathroom.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-bathroom-3" class="ms-2 fs-5"></p>
-                        </li>
-                        <li id="reception-img-li-3">
-                          <img src="./assets/imgs/reception.png" class="ms-4" height="24px" alt="">
-                        </li>
-                        <li>
-                          <p id="property-reception-3" class="ms-2 fs-5"></p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- end of PROPERTY-ITEM-3 -->
-
-                </div>
-                <!-- end of NEWS SECTION -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of RIGHT CONTENT -->
-
+        <!-- end of ROW -->
       </div>
-    </div>
-  </main>
-  <!-- end of MAIN -->
+      <!-- end of CONTAINER -->
+    </main>
+    <!-- end of MAIN -->
+
+<!-- Back to top button -->
+<button
+type="button"
+class="btn btn-danger btn-floating btn-lg"
+id="btn-back-to-top"><i class="fas fa-arrow-up"></i>
+</button>
+<!-- Back to top btn END -->
+
+<!-- footer -->
+<div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">Mortgage</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">House</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">News</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">Contact</a></li>
+    </ul>
+    <p class="text-center text-dark">&copy; 2024 Home-App. All rights reserved</p>
+  </footer>
+</div>
+<!-- footer End -->
+
 
   <!-- JQUERY v3.7.1 -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -485,8 +211,11 @@
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
 
-  <!-- CUSTOM JavaScript -->
-  <script src="./assets/js/script.js"></script>
-</body>
+      <!-- font awesome script -->
+      <script src="https://kit.fontawesome.com/28729d06ff.js" crossorigin="anonymous"></script>
 
+    <!-- CUSTOM JavaScript -->
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/totop.js"></script>
+  </body>
 </html>
