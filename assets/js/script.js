@@ -1,23 +1,31 @@
+// Load on webpage loading
 $(document).ready(function() {
-  // This declares a global variable named globalDurationYears
+
+  // Declare a global variable globalDurationYears
   var globalDurationYears;
-  // This select the element with the ID `property-items` and hides it from the user
+
+  // Select the element with the ID `property-items` and hide it
   $('#property-items').hide();
 
-  // Select the form with the ID "mortgage-form" and attach a submit event listener to it
+  // Select the form with the ID "mortgage-form" and add submit event listener
   $('#mortgage-form').submit(function(event) {
+
     // Prevent the default form submission behavior
     event.preventDefault();
-    // This leaves the `property-items` element itself intact but completely empty
+
+    // Clear the `property-items` element 
     $('#property-items').empty();
   
     // Extract the loan amount value from the field with ID "loan-amount"
     const loanAmount = $('#loan-amount').val();
+
     // Extract the interest rate value from the field with ID "interest-rate"
     const interestRate = $('#interest-rate').val();
+
     // Extract the loan duration in years from the field with ID "duration-years"
     const durationYears = $('#duration-years').val();
-    // This assigns the value of the variable durationYears to the globalDurationYears
+
+    // Assign the value of durationYears to globalDurationYears
     globalDurationYears = durationYears;
   
     // Construct the query URL for the API call, incorporating the form data
@@ -25,7 +33,6 @@ $(document).ready(function() {
   
     // Call the function to fetch mortgage data from the API using the constructed URL
     fetchMortgageData(queryURL);
-    //
   });
 
   // Declare an asynchronous function named fetchMortgageData that takes a queryURL as input
@@ -59,39 +66,52 @@ $(document).ready(function() {
 
   // Function to display mortgage data on the page
   function displayMortgageData(data) {
+
     // Log the raw data to the console for debugging purposes
     console.log(data);
-    // This line extracts the monthly mortgage payment from the data object (data)
+
+    // Extract the monthly mortgage payment from the data object (data)
     const monthlyPayment = data.monthly_payment.mortgage;
-    // This line extracts the annual mortgage payment from the data object (data)
+
+    // Extract the annual mortgage payment from the data object (data)
     const annualPayment = data.annual_payment.mortgage;
-    // This extracts the total interest paid from the data object
+
+    // Extract the total interest paid from the data object
     const interestPaid = data.total_interest_paid;
-    // This calculates the total number of months based on the globalDurationYears
+
+    // Calculates the total number of months based on the globalDurationYears
     const months = globalDurationYears * 12;
-    // Removes the `opacity-25` class and adds the `opacity-100` class
+
+    // Remove the `opacity-25` class and add the `opacity-100` class
     $('.opacity-25').removeClass('opacity-25').addClass('opacity-100');
-    // Formats the value of monthlyPayment as a currency amount in British Pounds
+
+    // Format the value of monthlyPayment as a currency amount in British Pounds
     const monthlyPaymentGBP = new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
     }).format(monthlyPayment);
-    // Formats the value of annualPaymentGBP as a currency amount in British Pounds
+
+    // Format the value of annualPaymentGBP as a currency amount in British Pounds
     const annualPaymentGBP = new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
     }).format(annualPayment);
-    // Formats the value of interestPaidGBP as a currency amount in British Pounds
+
+    // Format the value of interestPaidGBP as a currency amount in British Pounds
     const interestPaidGBP = new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
     }).format(interestPaid);
+
     // Update the text content of the element with ID "monthly-payment"
     $('#monthly-payment').text(monthlyPaymentGBP);
+
     // Update the text content of the element with ID "annual-payment"
     $('#annual-payment').text(annualPaymentGBP);
+
     // Update the text content of the element with ID "total-interest-paid"
     $('#total-interest-paid').text(interestPaidGBP);
+
     // Update the text content of the element with ID "#months"
     $('#months').text(months);
   };
@@ -100,13 +120,16 @@ $(document).ready(function() {
   $('#property-form').submit(function(event) {
     // Prevent the default form submission behavior
     event.preventDefault();
-    // This leaves the `property-items` element itself intact but completely empty
+
+    // Clear the `property-items` element 
     $('#property-items').empty();
-    // This select the element with the ID `property-items` and hides it from the user
+
+    // Select the element with the ID `property-items` and hide it
     $('#property-items').hide();
 
     // Extract the city name value from the field with ID "city-name"
     const cityName = $('#city-name').val();
+
     // Extract the country name value from the field with ID "country-name"
     const countryName = $('#country-name').val();
   
@@ -144,6 +167,7 @@ $(document).ready(function() {
 
       // Call a function to display the mortgage data
       displayPropertyData(result);
+
     // Catch any errors that occur during the request or parsing process
     } catch (error) {
       // Log the error to the console for debugging
@@ -153,28 +177,39 @@ $(document).ready(function() {
 
   // Function to display property data on the page
   function displayPropertyData(data) {
+
     // Select the element with the ID property-items and applies the show() method
     $('#property-items').show();
+
     // Log the raw data to the console for debugging purposes
     console.log(data);
     
+    // Display random property ads from the api
     for (i=0;i<5;i++){
       // Assigns a random integer between 0 and 39
       const i = Math.floor(Math.random() * 40);
+
       // Retrieves the image URL for the property at the random index i from the data.listing array
       var thumbnail = data.listing[i].image_url;
+
       // Retrieves the property type for the property at the random index i from the data.listing
       var propertyType = data.listing[i].property_type;
+
       // Retrieves the property price for the property at the random index i from the data.listing
       var propertyPrice = data.listing[i].price;
+
       // Retrieves the displayable address for the property at the random index i from the data.listing
       var propertyAddress = data.listing[i].displayable_address;
+
       // Retrieves the number of bedrooms for the property at the random index i from the data.listing
       var propertyBedroom = data.listing[i].num_bedrooms;
+
       // Retrieves the number of bathrooms for the property at the random index i from the data.listing
       var propertyBathroom = data.listing[i].num_bathrooms;
+
       // Retrieves the number of reception rooms for the property at the random index i from the data.listing
       var propertyReception = data.listing[i].num_recepts;
+
       // Formats the value of propertyPrice as a currency amount in British Pounds
       const propertyPriceGBP = new Intl.NumberFormat("en-GB", {
         style: "currency",
@@ -205,7 +240,7 @@ $(document).ready(function() {
         $('<li class="ms-2"><p id="property-reception-' + i + '" class="fs-5"></p></li>').text(propertyReception).appendTo(propertyFeatures);
       }
 
-      // 
+      // Append property info to property items element
       $('#property-items').append(propertyItemDiv);
     };
   };
