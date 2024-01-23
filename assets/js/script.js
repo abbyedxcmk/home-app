@@ -7,6 +7,7 @@ $(document).ready(function() {
       // Prevent the default form submission behavior
       event.preventDefault();
     
+
       // Extract the loan amount value from the field with ID "loan-amount"
       const loanAmount = $('#loan-amount').val();
       // Extract the interest rate value from the field with ID "interest-rate"
@@ -14,10 +15,11 @@ $(document).ready(function() {
       // Extract the loan duration in years from the field with ID "duration-years"
       const durationYears = $('#duration-years').val();
       //
+      console.log(loanAmount, interestRate, durationYears);
     
       // Construct the query URL for the API call, incorporating the form data
       const queryURL = `https://api.api-ninjas.com/v1/mortgagecalculator?loan_amount=${loanAmount}&interest_rate=${interestRate}&duration_years=${durationYears}`;
-    
+    console.log(queryURL);
       // Call the function to fetch mortgage data from the API using the constructed URL
       fetchMortgageData(queryURL);
       
@@ -56,10 +58,27 @@ $(document).ready(function() {
     function displayMortgageData(data) {
       // Log the raw data to the console for debugging purposes
       console.log(data);
+      
+      //var monthly_payment = `${data.monthly_payment.mortgage};
+
+     // var montky2= $('#monthly-payment2').html(`Monthly: ${data.monthly_payment.mortgage}`);
+      //var monthly_payment = ${data.monthly_payment.mortgage};
+      //console.log(monthly_payment);
+      // console.log(montky2);
+      // alert(monthly_payment);
+
+      // Update the value into textbox content of the element with ID "monthly-payment"
+      //$('#monthly-payment')
+
       // Update the text content of the element with ID "monthly-payment"
       $('#monthly-payment').text(`Monthly: ${data.monthly_payment.mortgage}`);
+
+      console.log(mothlypymnt);
+      alert(mothlypymnt);
       // Update the text content of the element with ID "annual-payment"
       $('#annual-payment').text(`Annual: ${data.annual_payment.mortgage}`);
+      // $('#annual-payment').text(`Annual: ${data.annual_payment.mortgage}`);
+
       // Update the text content of the element with ID "total-interest-paid"
       $('#total-interest-paid').text(`Total Interest Paid: ${data.total_interest_paid}`);
     };
