@@ -4,8 +4,73 @@ $(document).ready(function() {
   // Declare a global variable globalDurationYears
   var globalDurationYears;
 
-  // Select the element with the ID `property-items` and hide it
-  $('#property-items').hide();
+  // Define an empty array to store the mortgage data
+  var mortgageArray = [];
+
+  // Define an empty array to store the results data
+  var resultsArray = [];
+
+  // Define an empty array to store the results data
+  var propertyArray = [];
+
+  // Assign the value of London to cityName
+  var cityName = 'London';
+
+  // Assign the value of England to countryName
+  var countryName = 'England';
+
+  // Construct the query URL for the API call, incorporating the form data
+  var queryURL = `https://zoopla.p.rapidapi.com/properties/list?area=${cityName}%2C%20${countryName}&category=residential&include_retirement_homes=no&include_shared_accommodation=no&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=40`
+
+  // // Select the element with the ID `property-items` and hide it
+  // $('#property-items').hide();
+
+  // checks for previously stored mortgage data in localStorage
+  const storedMortgageData = localStorage.getItem('mortgageArray');
+  // executes if mortgage data was found
+  if (storedMortgageData) {
+    // parses the stored JSON string into a JavaScript object
+    const parsedData = JSON.parse(storedMortgageData);
+
+    // Updates the mortgage form values
+    $('#loan-amount').val(parsedData.loanAmount);
+    $('#interest-rate').val(parsedData.interestRate);
+    $('#duration-years').val(parsedData.durationYears);
+  };
+
+  // checks for previously stored results data in localStorage
+  const storedResultsData = localStorage.getItem('resultsArray');
+
+  // executes if results data was found
+  if (storedResultsData) {
+    // parses the stored JSON string into a JavaScript object
+    const parsedData = JSON.parse(storedResultsData);
+
+    // // Updates the results form values
+    $('#monthly-payment').text(parsedData.monthlyPaymentGBP);
+    $('#annual-payment').text(parsedData.annualPaymentGBP);
+    $('#total-interest-paid').text(parsedData.interestPaidGBP);
+    $('#months').text(parsedData.months);
+  };
+
+  // checks for previously stored property data in localStorage
+  const storedPropertyData = localStorage.getItem('propertyArray');
+
+  // executes if property data was found
+  if (storedPropertyData) {
+    // parses the stored JSON string into a JavaScript object
+    const parsedData = JSON.parse(storedPropertyData);
+
+    // Updates the property form values
+    $('#city-name').val(parsedData.cityName);
+    $('#country-name').val(parsedData.countryName);
+
+    cityName = parsedData.cityName;
+    cityName = parsedData.cityName;
+
+    // Construct the query URL for the API call, incorporating the form data
+    var queryURL = `https://zoopla.p.rapidapi.com/properties/list?area=${cityName}%2C%20${countryName}&category=residential&include_retirement_homes=no&include_shared_accommodation=no&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=40`
+  };
 
   // Select the form with the ID "mortgage-form" and add submit event listener
   $('#mortgage-form').submit(function(event) {
@@ -17,22 +82,32 @@ $(document).ready(function() {
     $('#property-items').empty();
   
     // Extract the loan amount value from the field with ID "loan-amount"
-    const loanAmount = $('#loan-amount').val();
+    var loanAmount = $('#loan-amount').val();
 
     // Extract the interest rate value from the field with ID "interest-rate"
-    const interestRate = $('#interest-rate').val();
+    var interestRate = $('#interest-rate').val();
 
     // Extract the loan duration in years from the field with ID "duration-years"
-    const durationYears = $('#duration-years').val();
+    var durationYears = $('#duration-years').val();
 
     // Assign the value of durationYears to globalDurationYears
     globalDurationYears = durationYears;
   
     // Construct the query URL for the API call, incorporating the form data
-    const queryURL = `https://api.api-ninjas.com/v1/mortgagecalculator?loan_amount=${loanAmount}&interest_rate=${interestRate}&duration_years=${durationYears}`;
+    var queryURL = `https://api.api-ninjas.com/v1/mortgagecalculator?loan_amount=${loanAmount}&interest_rate=${interestRate}&duration_years=${durationYears}`;
   
     // Call the function to fetch mortgage data from the API using the constructed URL
     fetchMortgageData(queryURL);
+
+    // Create an object to store the mortgage data
+    const mortgageData = {
+      loanAmount: loanAmount,
+      interestRate: interestRate,
+      durationYears: durationYears
+    };
+
+    // Store the mortgageArray in localStorage
+    localStorage.setItem('mortgageArray', JSON.stringify(mortgageData));
   });
 
   // Declare an asynchronous function named fetchMortgageData that takes a queryURL as input
@@ -66,9 +141,8 @@ $(document).ready(function() {
 
   // Function to display mortgage data on the page
   function displayMortgageData(data) {
-
     // Log the raw data to the console for debugging purposes
-    console.log(data);
+    // console.log(data);
 
     // Extract the monthly mortgage payment from the data object (data)
     const monthlyPayment = data.monthly_payment.mortgage;
@@ -114,7 +188,21 @@ $(document).ready(function() {
 
     // Update the text content of the element with ID "#months"
     $('#months').text(months);
+
+    // Create an object to store the results data
+    const resultsData = {
+      monthlyPaymentGBP: monthlyPaymentGBP,
+      annualPaymentGBP: annualPaymentGBP,
+      interestPaidGBP: interestPaidGBP,
+      months: months
+    };
+
+    // Store the mortgageArray in localStorage
+    localStorage.setItem('resultsArray', JSON.stringify(resultsData));
   };
+
+  // Call the function to fetch property data from the API using the constructed URL
+  fetchPropertyData(queryURL);
 
   // Select the form with the ID "property-form" and attach a submit event listener to it
   $('#property-form').submit(function(event) {
@@ -124,20 +212,26 @@ $(document).ready(function() {
     // Clear the `property-items` element 
     $('#property-items').empty();
 
-    // Select the element with the ID `property-items` and hide it
-    $('#property-items').hide();
-
     // Extract the city name value from the field with ID "city-name"
-    const cityName = $('#city-name').val();
+    cityName = $('#city-name').val();
 
     // Extract the country name value from the field with ID "country-name"
-    const countryName = $('#country-name').val();
+    countryName = $('#country-name').val();
   
     // Construct the query URL for the API call, incorporating the form data
-    const queryURL = `https://zoopla.p.rapidapi.com/properties/list?area=${cityName}%2C%20${countryName}&category=residential&include_retirement_homes=no&include_shared_accommodation=no&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=40`
+    queryURL = `https://zoopla.p.rapidapi.com/properties/list?area=${cityName}%2C%20${countryName}&category=residential&include_retirement_homes=no&include_shared_accommodation=no&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=40`
   
     // Call the function to fetch mortgage data from the API using the constructed URL
     fetchPropertyData(queryURL);
+
+    // Create an object to store the property data
+    const propertyData = {
+      cityName: cityName,
+      countryName: countryName
+    };
+
+    // Store the propertyArray in localStorage
+    localStorage.setItem('propertyArray', JSON.stringify(propertyData));  
   });
 
   // Declare an asynchronous function named fetchMortgageData that takes a queryURL as input
@@ -151,7 +245,7 @@ $(document).ready(function() {
         method: 'GET',
         // Set the 'X-Api-Key' header for authentication
         headers: {
-          'X-RapidAPI-Key': 'b55274dc38msh79e9da6e2ff0c24p135b5cjsncb8fdf5de282',
+          'X-RapidAPI-Key': '560f336ed6msh3f4a74d427a4bbep1f739ejsn92baa487d44f',
           'X-RapidAPI-Host': 'zoopla.p.rapidapi.com'
         }
       });
@@ -177,12 +271,11 @@ $(document).ready(function() {
 
   // Function to display property data on the page
   function displayPropertyData(data) {
+    // Log the raw data to the console for debugging purposes
+    // console.log(data);
 
     // Select the element with the ID property-items and applies the show() method
     $('#property-items').show();
-
-    // Log the raw data to the console for debugging purposes
-    console.log(data);
     
     // Display random property ads from the api
     for (i=0;i<5;i++){
@@ -210,6 +303,9 @@ $(document).ready(function() {
       // Retrieves the number of reception rooms for the property at the random index i from the data.listing
       var propertyReception = data.listing[i].num_recepts;
 
+      // Retrieves the property URL for the property at the random index i from the data.listing
+      var propertyUrl = data.listing[i].details_url;
+      
       // Formats the value of propertyPrice as a currency amount in British Pounds
       const propertyPriceGBP = new Intl.NumberFormat("en-GB", {
         style: "currency",
@@ -217,14 +313,14 @@ $(document).ready(function() {
       }).format(propertyPrice);
       
       // Creating the main property container
-      var propertyItemDiv = $('<div class="col-12 col-md-10 mx-md-auto mt-3 p-3 d-flex flex-lg-column justify-content-between rounded-3 bg-white shadow-lg"></div>');
+      var propertyItemDiv = $('<div class="col-12 my-2 p-3 d-flex flex-column flex-sm-row rounded-3 bg-white shadow-lg"></div>');
 
-      // Adding the image thumbnail
-      var propertyThumbnailDiv = $('<div class="col-4 col-lg-12 my-auto"></div>').appendTo(propertyItemDiv);
-      $('<div id="property-thumbnail-' + i + '" class="bg-transparent w-100 h-100 rounded-3"></div>').html('<img src="' + thumbnail + '" class="img-fluid rounded-3" />').appendTo(propertyThumbnailDiv);
+      // Adding the image thumbnail with a link
+      var propertyThumbnailDiv = $('<a href="' + propertyUrl + '" class="col-12 col-sm-4 my-auto custom-linked" target="_blank"><img src="' + thumbnail + '" class="img-fluid rounded-3" /></a>');
+      propertyThumbnailDiv.appendTo(propertyItemDiv);
 
       // Adding the property information
-      var propertyInfo = $('<div id="property-item-' + i + '" class="col-7 col-lg-12 mt-lg-2"></div>').appendTo(propertyItemDiv);
+      var propertyInfo = $('<div id="property-item-' + i + '" class="col-12 col-sm-8 mt-2 mt-sm-0 ps-3 pe-3"></div>').appendTo(propertyItemDiv);
       $('<p id="property-type-' + i + '"></p>').text(propertyType).appendTo(propertyInfo);
       $('<h2 id="property-price-' + i + '"></h2>').text(propertyPriceGBP).appendTo(propertyInfo);
       $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(propertyInfo);
@@ -245,7 +341,7 @@ $(document).ready(function() {
     };
   };
 
-  //
+  // Declares an asynchronous function called fetchRealTimeNewsData()
   async function fetchRealTimeNewsData() {
     const settings = {
       async: true,
@@ -253,93 +349,64 @@ $(document).ready(function() {
       url: 'https://real-time-news-data.p.rapidapi.com/search?query=MORTGAGE&country=GB&lang=en&time_published=7d',
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '08fbea1f54mshb80b282ded04b7bp1184d7jsnd63fe4ea2222',
+        'X-RapidAPI-Key': '560f336ed6msh3f4a74d427a4bbep1f739ejsn92baa487d44f',
         'X-RapidAPI-Host': 'real-time-news-data.p.rapidapi.com'
       }
     };
     
+    // Asynchronous HTTP request to a server using the jQuery AJAX API
     $.ajax(settings).done(function (response) {
-      // Call a function to display the mortgage data
+      // Call a function to display the real time news data
       displayRealTimeNewsData(response);
     });
   };
 
-  //
-  fetchRealTimeNewsData();
+  // // Calls the fetchRealTimeNewsData() function again to fetch the latest news data
+  // fetchRealTimeNewsData();
 
-  // Function to display property data on the page
+  // Non-asynchronous function called displayRealTimeNewsData()
   function displayRealTimeNewsData(response) {
-
     // Log the raw data to the console for debugging purposes
-    console.log(response);
+    // console.log(response);
 
+    // Extracts the JSON data from the response object and stores it in a JavaScript array
     const array = response.data;
-
+    // Creates an empty array called firstSet
     const firstSet = [];
-    const secondSet = [];
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 11; i++) {
+      // Generates a random index between 0 and the length of the array
       const index = Math.floor(Math.random() * array.length);
+      // Adds the element at the specified index in the array to the firstSet array
       firstSet.push(array[index]);
+      // Removes the element at the specified index in the array
       array.splice(index, 1);
 
-      // Retrieves the displayable address for the property at the random index i from the data.listing
+      // Retrieves the published datetime for the news at the random index i
       var newsItems0Date = firstSet[i].published_datetime_utc;
 
-      // Retrieves the property type for the property at the random index i from the data.listing
+      // Retrieves the title for the news at the random index i
       var newsItems0Title = firstSet[i].title;
 
-      // Retrieves the property price for the property at the random index i from the data.listing
+      // Retrieves the link for the news at the random index i
       var newsItems0Link = firstSet[i].link;
 
-      const date = newsItems0Date;
-      const formattedDate = moment(date).format("DD-MM-YYYY HH:mm");
+      // Declares a constant called date and assigns it the value of the newsItems0Date
+      const date0 = newsItems0Date;
+
+      // Formats the date variable using the moment library
+      const formattedDate0 = moment(date0).format("DD-MM-YYYY HH:mm");
       
-      // Creating the main property container
-      var newsItemDiv = $('<div class="col-12 p-3 mb-3 rounded-3 bg-white shadow-lg"></div>');
+      // Creates a new HTML element using jQuery and assigns it to the newsItemDiv
+      var newsItemDiv = $('<div class="col-12 p-3 mb-3 overflow-hidden rounded-3 bg-white shadow-lg"></div>');
 
-      // var newsItemDiv = $('<div class="col-12 col-md-6 p-3 rounded-3 bg-white shadow-lg"></div>');
-
-      // Adding the property information
+      // Adding the news information
       var newsItemInfo = $('<div id="news-item-' + i + '" class="col-12"></div>').appendTo(newsItemDiv);
-      $('<p id="news-published-date-' + i + '"></p>').text(formattedDate).appendTo(newsItemInfo);
-      $('<h4 id="news-title-' + i + '"></h4>').text(newsItems0Title).appendTo(newsItemInfo);
-      // $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(newsItemInfo);
+      $('<p id="news-published-date-' + i + '"></p>').text(formattedDate0).appendTo(newsItemInfo);
+      $('<a href="' + newsItems0Link + '" id="news-title-' + i + '" class="fs-5 custom-text text-decoration-none"></a>').text(newsItems0Title).appendTo(newsItemInfo);
 
-      // Append property info to property items element
+      // Append news info to #news-items-0
       $('#news-items-0').append(newsItemDiv);
-    };
-
-    for (let i = 0; i < 4; i++) {
-      const index = Math.floor(Math.random() * array.length);
-      secondSet.push(array[index]);
-      array.splice(index, 1);
-
-      // Retrieves the displayable address for the property at the random index i from the data.listing
-      var newsItems0Date = secondSet[i].published_datetime_utc;
-
-      // Retrieves the property type for the property at the random index i from the data.listing
-      var newsItems0Title = secondSet[i].title;
-
-      // Retrieves the property price for the property at the random index i from the data.listing
-      var newsItems0Link = secondSet[i].link;
-
-      const date = newsItems0Date;
-      const formattedDate = moment(date).format("DD-MM-YYYY HH:mm");
-      
-      // Creating the main property container
-      var newsItemDiv = $('<div class="col-12 p-3 mb-3 rounded-3 bg-white shadow-lg"></div>');
-
-      // var newsItemDiv = $('<div class="col-12 col-md-6 p-3 rounded-3 bg-white shadow-lg"></div>');
-
-      // Adding the property information
-      var newsItemInfo = $('<div id="news-item-' + i + '" class="col-12"></div>').appendTo(newsItemDiv);
-      $('<p id="news-published-date-' + i + '"></p>').text(formattedDate).appendTo(newsItemInfo);
-      $('<h4 id="news-title-' + i + '"></h4>').text(newsItems0Title).appendTo(newsItemInfo);
-      // $('<p id="property-address-' + i + '"></p>').text(propertyAddress).appendTo(newsItemInfo);
-
-      // Append property info to property items element
-      $('#news-items-1').append(newsItemDiv);
     };
   };
 });

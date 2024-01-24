@@ -7,3 +7,18 @@
   }
   /* scroll to top End */
 
+.custom-height {
+  height: 12rem;
+}
+
+.custom-text {
+  color: #212529;
+}
+
+.custom-text:hover {
+  color: #6c757d;
+}
+
+.custom-linked:hover {
+  opacity: 75%;
+}
