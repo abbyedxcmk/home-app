@@ -362,7 +362,7 @@ $(document).ready(function() {
   };
 
   // Calls the fetchRealTimeNewsData() function again to fetch the latest news data
-  fetchRealTimeNewsData();
+  // fetchRealTimeNewsData();
 
   // Non-asynchronous function called displayRealTimeNewsData()
   function displayRealTimeNewsData(response) {
