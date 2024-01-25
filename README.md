@@ -3,9 +3,6 @@
 <br>
 <br> `Home mortgage helper & live news feed`
 
-## [Description](#description)
-
-
 
 ## [Table of Contents](#table-of-contents)
 
@@ -17,6 +14,11 @@
 * [License](#license)
 * [Badges](#badges)
 
+
+## [Description](#description)
+The Home application uses APIs (Application Programming Interfaces) that pull in the latest rates, snapshot figures on mortgage rates and interest, and relevant housing market news. By working together, these APIs create a more cohesive snapshot of the property and mortgage landscape for everyone involved.
+
+
 ## [Acceptance Criteria](#acceptance-criteria)
 
 
@@ -27,15 +29,11 @@
 
 ## [Mock-Up](#mock-up)
 
-![portfolio demo]()
+![portfolio demo](./assets/docs/Amiresponsive.jpg)
 
 [Live View](https://abbyedxcmk.github.io/home-app/)
-<br>
-[Static View]()
-<br>
-[Deployed Application]()
-<br>
-[GitHub project repo]()
+
+
 
 ## [Installation](#installation)
 
