@@ -354,6 +354,8 @@ $(document).ready(function() {
       displayRealTimeNewsData(response);
     });
   };
+  
+  fetchRealTimeNewsData();
 
   // Non-asynchronous function called displayRealTimeNewsData()
   function displayRealTimeNewsData(response) {
