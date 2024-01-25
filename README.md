@@ -9,7 +9,7 @@
 
 ## [Table of Contents](#table-of-contents)
 
-* [Description](#descrition)
+* [Description](#description)
 * [Acceptance Criteria](#acceptance-criteria)
 * [Mock-Up](#mock-up)
 * [Installation](#installation)
@@ -29,7 +29,7 @@
 
 ![portfolio demo]()
 
-[Live View]()
+[Live View](https://abbyedxcmk.github.io/home-app/)
 <br>
 [Static View]()
 <br>
