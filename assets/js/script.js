@@ -241,7 +241,7 @@ $(document).ready(function() {
         method: 'GET',
         // Set the 'X-Api-Key' header for authentication
         headers: {
-          'X-RapidAPI-Key': '560f336ed6msh3f4a74d427a4bbep1f739ejsn92baa487d44f',
+          'X-RapidAPI-Key': 'ef8b0bca27mshbd83f2910208d53p113febjsnb8d369d5328f',
           'X-RapidAPI-Host': 'zoopla.p.rapidapi.com'
         }
       });
@@ -343,7 +343,7 @@ $(document).ready(function() {
       url: 'https://real-time-news-data.p.rapidapi.com/search?query=MORTGAGE&country=GB&lang=en&time_published=7d',
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '1f2979beaamsh76a36291b789febp1ef8ebjsna2be4d03332a',
+        'X-RapidAPI-Key': 'ef8b0bca27mshbd83f2910208d53p113febjsnb8d369d5328f',
         'X-RapidAPI-Host': 'real-time-news-data.p.rapidapi.com'
       }
     };
