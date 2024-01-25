@@ -59,7 +59,13 @@ Isiaka Bhadmus
 Thomas Jack
 
 **Supporting links:** <br>
-API DOCS + links 
+API DOCS:
+<br>
+https://rapidapi.com/apidojo/api/zoopla
+<br>
+https://api-ninjas.com/api
+<br>
+https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-news-data
 
 
 
@@ -101,7 +107,7 @@ Bruno Silva
 
 ## [Tests](#tests)
 
-N/A
+Tested deployed application and tested for mobile responsiveness 
 
 <br>
 
