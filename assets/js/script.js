@@ -22,11 +22,9 @@ $(document).ready(function() {
   // Construct the query URL for the API call, incorporating the form data
   var queryURL = `https://zoopla.p.rapidapi.com/properties/list?area=${cityName}%2C%20${countryName}&category=residential&include_retirement_homes=no&include_shared_accommodation=no&listing_status=sale&order_by=age&ordering=descending&page_number=1&page_size=40`
 
-  // // Select the element with the ID `property-items` and hide it
-  // $('#property-items').hide();
-
   // checks for previously stored mortgage data in localStorage
   const storedMortgageData = localStorage.getItem('mortgageArray');
+
   // executes if mortgage data was found
   if (storedMortgageData) {
     // parses the stored JSON string into a JavaScript object
@@ -46,7 +44,7 @@ $(document).ready(function() {
     // parses the stored JSON string into a JavaScript object
     const parsedData = JSON.parse(storedResultsData);
 
-    // // Updates the results form values
+    // Updates the results form values
     $('#monthly-payment').text(parsedData.monthlyPaymentGBP);
     $('#annual-payment').text(parsedData.annualPaymentGBP);
     $('#total-interest-paid').text(parsedData.interestPaidGBP);
@@ -141,8 +139,6 @@ $(document).ready(function() {
 
   // Function to display mortgage data on the page
   function displayMortgageData(data) {
-    // Log the raw data to the console for debugging purposes
-    // console.log(data);
 
     // Extract the monthly mortgage payment from the data object (data)
     const monthlyPayment = data.monthly_payment.mortgage;
@@ -271,8 +267,6 @@ $(document).ready(function() {
 
   // Function to display property data on the page
   function displayPropertyData(data) {
-    // Log the raw data to the console for debugging purposes
-    // console.log(data);
 
     // Select the element with the ID property-items and applies the show() method
     $('#property-items').show();
@@ -361,13 +355,8 @@ $(document).ready(function() {
     });
   };
 
-  // Calls the fetchRealTimeNewsData() function again to fetch the latest news data
-  // fetchRealTimeNewsData();
-
   // Non-asynchronous function called displayRealTimeNewsData()
   function displayRealTimeNewsData(response) {
-    // Log the raw data to the console for debugging purposes
-    // console.log(response);
 
     // Extracts the JSON data from the response object and stores it in a JavaScript array
     const array = response.data;
@@ -377,8 +366,10 @@ $(document).ready(function() {
     for (let i = 0; i < 11; i++) {
       // Generates a random index between 0 and the length of the array
       const index = Math.floor(Math.random() * array.length);
+
       // Adds the element at the specified index in the array to the firstSet array
       firstSet.push(array[index]);
+
       // Removes the element at the specified index in the array
       array.splice(index, 1);
 
@@ -410,4 +401,3 @@ $(document).ready(function() {
     };
   };
 });
-
