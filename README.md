@@ -24,6 +24,26 @@ The Home application uses APIs (Application Programming Interfaces) that pull in
 
 
 ### Technical Acceptance Criteria:
+* Use Bootstrap.
+* Be deployed to GitHub Pages.
+* Be interactive (in other words, accept and respond to user input).
+* Use at least two server-side APIsLinks to an external site..
+* Does not use alerts, confirms, or prompts (use modals).
+* Use client-side storage to store persistent data.
+* Be responsive.
+* Have a polished UI.
+* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class/id naming conventions, indentation, quality comments, and so on).
+* Have a quality README (including a unique name, description, technologies used, screenshot, and link to the deployed application).
+
+### Presentation Requirements:
+* Elevator pitch: a one minute description of your application
+* Concept: What is your user story? What was your motivation for development?
+* Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
+* Demo: Show your stuff!
+* Directions for Future Development
+* Links to the deployed application and the GitHub repository
+
+[Link to presentation](./assets/docs/homeapp_Preso.pdf)
 
 
 
@@ -31,32 +51,50 @@ The Home application uses APIs (Application Programming Interfaces) that pull in
 
 ![portfolio demo](./assets/docs/Amiresponsive.jpg)
 
-[Live View](https://abbyedxcmk.github.io/home-app/)
+![Page Screen Capture](./assets/imgs/home%20app%20screen%20capture.png)
+
+* [Deployed App](https://abbyedxcmk.github.io/home-app/)
+
+* [Project Repo](https://github.com/abbyedxcmk/home-app)
 
 
 
 ## [Installation](#installation)
 
-Talk about how we put our app together
+The Home application is engineered to streamline the process of acquiring real 
+estate data by harnessing the power of JavaScript and third-party APIs. 
+Upon page load, users interact with a form to input mortgage-related information, 
+which triggers a seamless API request to a mortgage calculator service. 
+This functionality is implemented using asynchronous JavaScript calls, ensuring 
+that the most recent mortgage rates and calculations are fetched without 
+disrupting the user experience. 
+The app leverages HTTP GET requests with appropriate headers to authenticate 
+and retrieve data in real-time.
+In addition, the application integrates with a property listing API, allowing users to 
+search for properties based on specific locations. 
+The data fetched includes image URLs, property types, prices, and other relevant 
+details, all formatted neatly in British Pounds using the International Number 
+Format for consistency and readability.
 
 ## [Credits](#credits)
 
-Original code by Bruno Silva, Isiaka Bhadmus, Thomas Jack
+Original code by `Bruno Silva`, `Isiaka Bhadmus`, `Thomas Jack`
 
 <br>
 
 
 **Support and mentoring from course mentors:**
 <br>
-Zakariya Hussain
+`Zakariya Hussain`
+`Bobbi Tarkany`
 
 **Peer Study Group Support:**
 <br>
-Bruno Silva
+`Bruno Silva`
 <br>
-Isiaka Bhadmus
+`Isiaka Bhadmus`
 <br>
-Thomas Jack
+`Thomas Jack`
 
 **Supporting links:** <br>
 API DOCS:
@@ -89,11 +127,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## [Badges](#badges)
 
-![Static Badge](https://img.shields.io/badge/JavaScript_50%25-orange)
-![Static Badge](https://img.shields.io/badge/HTML_5%25-blue)
-![Static Badge](https://img.shields.io/badge/CSS_10%25-Green)
-![Static Badge](https://img.shields.io/badge/jQuery_25%25-yellow)
-![Static Badge](https://img.shields.io/badge/Bootstrap_10%25-purple)
+![Static Badge](https://img.shields.io/badge/JavaScript_5%25-orange)
+![Static Badge](https://img.shields.io/badge/HTML_20%25-blue)
+![Static Badge](https://img.shields.io/badge/CSS_5%25-Green)
+![Static Badge](https://img.shields.io/badge/jQuery_56%25-yellow)
+![Static Badge](https://img.shields.io/badge/Bootstrap_20%25-purple)
 
 ## [Features](#features)
 
@@ -101,13 +139,14 @@ N/A
 
 ## [Contributing](#contributing)
 
-Thomas Jack
-Isiaka Bhadmus
-Bruno Silva
+* Thomas Jack
+* Isiaka Bhadmus
+* Bruno Silva
 
 ## [Tests](#tests)
 
-Tested deployed application and tested for mobile responsiveness 
+Tested deployed application. No bugs found
+Fully responsive mobile-first design (tested on multiple media types)
 
 <br>
 
