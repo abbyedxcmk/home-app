@@ -43,7 +43,7 @@ The Home application uses APIs (Application Programming Interfaces) that pull in
 * Directions for Future Development
 * Links to the deployed application and the GitHub repository
 
-[Link to presentation](./docs/homeapp_Preso.pptx)
+[Link to presentation](./assets/docs/homeapp_Preso.pdf)
 
 
 
